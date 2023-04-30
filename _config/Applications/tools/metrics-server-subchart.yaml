@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metrics-server-subchart
+  namespace: argocd
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: kube-system
+  source:
+    path: kube-system/metrics-server
+    repoURL: 'https://github.com/project-for-good/argocd.git'
+    targetRevision: develop
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated: null

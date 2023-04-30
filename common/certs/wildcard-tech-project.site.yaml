@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-tech-project.site
+spec:
+  commonName: '*.tech-project.site'
+  dnsNames:
+  - '*.tech-project.site'
+  - tech-project.site
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  secretName: wildcard-tech-project.site

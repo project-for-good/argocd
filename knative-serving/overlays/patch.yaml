@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-network
+data:
+  ingress-class: "kourier.ingress.networking.knative.dev"
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-gc
+data:
+  # Minimum number of non-active revisions to retain.
+  min-non-active-revisions: "3"
+
+  # Maximum number of non-active revisions to retain
+  # or "disabled" to disable any maximum limit.
+  max-non-active-revisions: "10"

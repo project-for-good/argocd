@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-crds
+  namespace: argocd
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: monitoring
+  source:
+    path: monitoring/kube-prometheus/setup
+    repoURL: 'https://github.com/project-for-good/argocd.git'
+    targetRevision: develop
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
+    automated: null

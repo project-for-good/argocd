@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: data-collector
+spec:
+  schedule: "0 2 * * 0"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: data-collector
+            image: luis13byte/tools:data-collector-master
+            imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
