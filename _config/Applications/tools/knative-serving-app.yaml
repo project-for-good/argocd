@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: knative-serving-app
+  namespace: argocd
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: knative-serving
+  source:
+    path: knative-serving
+    repoURL: 'https://github.com/project-for-good/argocd.git'
+    targetRevision: develop
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated: null
